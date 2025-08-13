@@ -1,0 +1,82 @@
+
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebXE — Free Tools & Guides</title>
+<meta name="description" content="WebXE: Free online tools, resources and guides to help you work faster and earn online.">
+<link rel="icon" href="/assets/logo.png">
+<link rel="stylesheet" href="/assets/style.css">
+</head><body>
+<nav class="nav">
+  <div class="brand">
+    <img src="/assets/logo.png" alt="WebXE logo">
+    <div class="name">WebXE</div>
+  </div>
+  <div class="navlinks">
+    <a class="btn" href="/index.html">Home</a>
+    <a class="btn" href="/tools/qr-generator.html">Tools</a>
+    <a class="btn" href="/blog/post-1.html">Blog</a>
+    <a class="btn" href="/about.html">About</a>
+    <a class="btn primary" href="/contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="container" style="padding-top:24px;max-width:900px">
+  <div class="section-title"><h1>One‑Page Resume Builder</h1><span class="tag">PDF export</span></div>
+  <div class="card">
+    <div class="grid" style="grid-template-columns:1fr 1fr">
+      <div>
+        <label>Full Name</label><input class="input" id="name" placeholder="Your Name">
+        <label style="margin-top:8px">Title</label><input class="input" id="title" placeholder="e.g., Web Developer">
+        <label style="margin-top:8px">Email</label><input class="input" id="email" placeholder="you@example.com">
+        <label style="margin-top:8px">Phone</label><input class="input" id="phone" placeholder="+91-XXXXXXXXXX">
+        <label style="margin-top:8px">Summary</label><textarea class="input" id="summary" rows="4" placeholder="Short 2–3 line summary"></textarea>
+      </div>
+      <div>
+        <label>Skills (comma separated)</label><input class="input" id="skills" placeholder="HTML, CSS, JS, Canva">
+        <label style="margin-top:8px">Experience</label><textarea class="input" id="exp" rows="5" placeholder="Company — Role — Achievements"></textarea>
+        <label style="margin-top:8px">Education</label><textarea class="input" id="edu" rows="4" placeholder="Degree — Institute — Year"></textarea>
+      </div>
+    </div>
+    <div style="margin-top:12px">
+      <button class="btn primary" id="download">Download PDF</button>
+    </div>
+  </div>
+</div>
+<script>
+// Very small PDF generator (no external libs): draw on <canvas>, then save as PDF via print dialog.
+document.getElementById('download').onclick=()=>{
+  const data={
+    name:val('name'), title:val('title'), email:val('email'),
+    phone:val('phone'), summary:val('summary'), skills:val('skills'),
+    exp:val('exp'), edu:val('edu')
+  };
+  const w=794, h=1123; // A4 @ 96dpi approx
+  const c=document.createElement('canvas'); c.width=w; c.height=h; const ctx=c.getContext('2d');
+  ctx.fillStyle='#ffffff'; ctx.fillRect(0,0,w,h);
+  ctx.fillStyle='#0f172a'; ctx.font='bold 28px Arial'; ctx.fillText(data.name||'Your Name', 48, 72);
+  ctx.fillStyle='#475569'; ctx.font='16px Arial'; ctx.fillText(data.title||'', 48, 100);
+  ctx.fillStyle='#2563eb'; ctx.fillRect(48, 120, w-96, 2);
+  ctx.fillStyle='#0f172a'; ctx.font='bold 18px Arial'; ctx.fillText('Summary', 48, 160);
+  writeMultiline(ctx, data.summary||'', 48, 184, w-96, 20);
+  ctx.font='bold 18px Arial'; ctx.fillText('Skills', 48, 270);
+  writeMultiline(ctx, data.skills||'', 48, 294, w-96, 20);
+  ctx.font='bold 18px Arial'; ctx.fillText('Experience', 48, 360);
+  writeMultiline(ctx, data.exp||'', 48, 384, w-96, 20);
+  ctx.font='bold 18px Arial'; ctx.fillText('Education', 48, 540);
+  writeMultiline(ctx, data.edu||'', 48, 564, w-96, 20);
+  ctx.fillStyle='#64748b'; ctx.font='14px Arial'; ctx.fillText((data.email||'')+'  '+(data.phone||''), 48, h-48);
+  const dataUrl=c.toDataURL('image/png');
+  const wdw=window.open(''); wdw.document.write('<img src="'+dataUrl+'" style="width:100%">'); wdw.document.close(); wdw.focus(); wdw.print();
+};
+function val(id){return document.getElementById(id).value.trim()}
+function writeMultiline(ctx, text, x, y, maxWidth, lineHeight){const words=text.split(/\s+/); let line=''; let yy=y; for(let n=0;n<words.length;n++){let test=line+words[n]+' '; if(ctx.measureText(test).width>maxWidth){ctx.fillText(line,x,yy); line=words[n]+' '; yy+=lineHeight;} else {line=test;}} ctx.fillText(line,x,yy);}
+</script>
+
+<footer class="footer">
+  <div class="container">
+    <div>© <span id="year"></span> WebXE • Built for speed and simplicity.</div>
+    <div class="small">Ads & affiliate spaces are prepared inside pages. Add your AdSense/affiliate code where noted in comments.</div>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body></html>

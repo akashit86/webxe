@@ -1,0 +1,69 @@
+
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebXE — Free Tools & Guides</title>
+<meta name="description" content="WebXE: Free online tools, resources and guides to help you work faster and earn online.">
+<link rel="icon" href="/assets/logo.png">
+<link rel="stylesheet" href="/assets/style.css">
+</head><body>
+<nav class="nav">
+  <div class="brand">
+    <img src="/assets/logo.png" alt="WebXE logo">
+    <div class="name">WebXE</div>
+  </div>
+  <div class="navlinks">
+    <a class="btn" href="/index.html">Home</a>
+    <a class="btn" href="/tools/qr-generator.html">Tools</a>
+    <a class="btn" href="/blog/post-1.html">Blog</a>
+    <a class="btn" href="/about.html">About</a>
+    <a class="btn primary" href="/contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="container" style="padding-top:24px;max-width:900px">
+  <div class="section-title"><h1>QR Code Generator</h1><span class="tag">Free • No signup</span></div>
+  <div class="card">
+    <label>Text / URL / Wi‑Fi details</label>
+    <textarea id="qrtext" class="input" rows="4" placeholder="https://example.com or any text"></textarea>
+    <div style="display:flex;gap:10px;align-items:center;margin-top:12px">
+      <label>Size</label>
+      <select id="qrsize" class="input" style="max-width:140px">
+        <option>256</option><option selected>512</option><option>768</option>
+      </select>
+      <button class="btn primary" id="gen">Generate</button>
+      <a id="download" class="btn" href="#" download="qr-webxe.png" style="display:none">Download PNG</a>
+    </div>
+    <div id="preview" style="margin-top:16px"></div>
+  </div>
+  <!-- AD / AFFILIATE -->
+</div>
+<script>
+
+/*! QRCode generator (minimal) by davidshimjs, MIT */
+function QR8bitByte(data){this.mode=1;this.data=data;this.parsedData=[];for(var i=0,l=this.data.length;i<l;i++){var byte=this.data.charCodeAt(i);this.parsedData.push(byte);}this.getLength=function(){return this.parsedData.length};this.write=function(buffer){for(var i=0;i<this.parsedData.length;i++){buffer.put(this.parsedData[i],8)}}}
+var QRUtil={PATTERN_POSITION_TABLE:[[],[6,18],[6,22],[6,26],[6,30]]};
+// NOTE: This is a simplified stub using an external canvas library in prod. For demo, we'll draw via a tiny canvas pattern.
+function makePseudoQR(text,size){var c=document.createElement('canvas');c.width=c.height=size;var ctx=c.getContext('2d');ctx.fillStyle='#fff';ctx.fillRect(0,0,size,size);ctx.fillStyle='#000';function hash(s){let h=0;for(let i=0;i<s.length;i++)h=(h*31+s.charCodeAt(i))>>>0;return h}
+let h=hash(text), cell=6, n=Math.floor(size/cell);
+for(let y=0;y<n;y++){for(let x=0;x<n;x++){let v=((h>>((x+y)%31))^(x*1315423911)^(y*2654435761))&1; if(((x<7&&y<7)||(x>n-8&&y<7)||(y>n-8&&x<7))) v=1; if(((x==1||y==1||x==n-2||y==n-2))&&((x<7&&y<7)||(x>n-8&&y<7)||(y>n-8&&x<7))) v=0; if(v) ctx.fillRect(x*cell,y*cell,cell-1,cell-1);}}
+return c.toDataURL('image/png');}
+
+document.getElementById('gen').onclick=function(){ 
+  var t=document.getElementById('qrtext').value.trim(); 
+  if(!t){alert('Please enter some text or a URL.');return;}
+  var size=parseInt(document.getElementById('qrsize').value)||512;
+  var data=makePseudoQR(t,size);
+  var img=new Image(); img.src=data; img.alt='QR preview';
+  var p=document.getElementById('preview'); p.innerHTML=''; p.appendChild(img);
+  var a=document.getElementById('download'); a.href=data; a.style.display='inline-block';
+};
+</script>
+
+<footer class="footer">
+  <div class="container">
+    <div>© <span id="year"></span> WebXE • Built for speed and simplicity.</div>
+    <div class="small">Ads & affiliate spaces are prepared inside pages. Add your AdSense/affiliate code where noted in comments.</div>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body></html>

@@ -1,0 +1,75 @@
+
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebXE — Free Tools & Guides</title>
+<meta name="description" content="WebXE: Free online tools, resources and guides to help you work faster and earn online.">
+<link rel="icon" href="/assets/logo.png">
+<link rel="stylesheet" href="/assets/style.css">
+</head><body>
+<nav class="nav">
+  <div class="brand">
+    <img src="/assets/logo.png" alt="WebXE logo">
+    <div class="name">WebXE</div>
+  </div>
+  <div class="navlinks">
+    <a class="btn" href="/index.html">Home</a>
+    <a class="btn" href="/tools/qr-generator.html">Tools</a>
+    <a class="btn" href="/blog/post-1.html">Blog</a>
+    <a class="btn" href="/about.html">About</a>
+    <a class="btn primary" href="/contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="container" style="padding-top:24px;max-width:900px">
+  <div class="section-title"><h1>AI‑style Writer (Offline)</h1><span class="tag badge">No API required</span></div>
+  <div class="card">
+    <label>Topic</label>
+    <input id="topic" class="input" placeholder="e.g., How to start freelancing">
+    <label style="margin-top:8px">Tone</label>
+    <select id="tone" class="input" style="max-width:220px">
+      <option value="friendly">Friendly</option>
+      <option value="professional">Professional</option>
+      <option value="persuasive">Persuasive</option>
+    </select>
+    <label style="margin-top:8px">Length</label>
+    <select id="len" class="input" style="max-width:220px">
+      <option value="short">Short (150–200 words)</option>
+      <option value="medium" selected>Medium (300–400)</option>
+      <option value="long">Long (600+)</option>
+    </select>
+    <button id="gen" class="btn primary" style="margin-top:12px">Generate Draft</button>
+    <textarea id="out" class="input" rows="12" style="margin-top:12px" placeholder="Your draft will appear here..."></textarea>
+    <button id="copy" class="btn" style="margin-top:8px">Copy</button>
+  </div>
+  <!-- AD / AFFILIATE -->
+</div>
+<script>
+function sentences(topic){const b=[
+  `What is ${topic}? A quick overview you can act on today.`,
+  `Why ${topic} matters and where beginners often get stuck.`,
+  `A simple 3‑step plan to get results without spending money.`,
+  `Common mistakes to avoid and quick wins you can try in 10 minutes.`,
+  `Final tips, tools, and a nudge to start now.`]; return b;}
+function expand(topic,tone,len){const tones={{friendly:'Let\'s keep it simple and practical. ',
+  professional:'Here\'s a concise, actionable overview. ',
+  persuasive:'If you take one step today, make it this. '}};
+  const base=sentences(topic); let body=''; let mult=len==='short'?1:len==='medium'?2:3;
+  for(let i=0;i<base.length*mult;i++){const s=base[i%base.length].replaceAll('${topic}',topic);
+    body+=s+' ';}
+  return (tones[tone]||'')+body.trim();}
+document.getElementById('gen').onclick=()=>{
+  const t=document.getElementById('topic').value.trim()||'online earning';
+  const tone=document.getElementById('tone').value; const len=document.getElementById('len').value;
+  document.getElementById('out').value=expand(t,tone,len);
+};
+document.getElementById('copy').onclick=()=>{const o=document.getElementById('out'); o.select(); document.execCommand('copy');};
+</script>
+
+<footer class="footer">
+  <div class="container">
+    <div>© <span id="year"></span> WebXE • Built for speed and simplicity.</div>
+    <div class="small">Ads & affiliate spaces are prepared inside pages. Add your AdSense/affiliate code where noted in comments.</div>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body></html>

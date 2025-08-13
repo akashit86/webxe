@@ -1,0 +1,64 @@
+
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WebXE — Free Tools & Guides</title>
+<meta name="description" content="WebXE: Free online tools, resources and guides to help you work faster and earn online.">
+<link rel="icon" href="/assets/logo.png">
+<link rel="stylesheet" href="/assets/style.css">
+</head><body>
+<nav class="nav">
+  <div class="brand">
+    <img src="/assets/logo.png" alt="WebXE logo">
+    <div class="name">WebXE</div>
+  </div>
+  <div class="navlinks">
+    <a class="btn" href="/index.html">Home</a>
+    <a class="btn" href="/tools/qr-generator.html">Tools</a>
+    <a class="btn" href="/blog/post-1.html">Blog</a>
+    <a class="btn" href="/about.html">About</a>
+    <a class="btn primary" href="/contact.html">Contact</a>
+  </div>
+</nav>
+
+<div class="container" style="padding-top:24px;max-width:900px">
+  <div class="section-title"><h1>Image Compressor</h1><span class="tag badge">Client-side</span></div>
+  <div class="card">
+    <input type="file" id="file" accept="image/*" class="input">
+    <div style="display:flex;gap:10px;margin-top:12px;align-items:center">
+      <label>Quality (0.1–1.0)</label>
+      <input type="number" id="quality" class="input" min="0.1" max="1" step="0.1" value="0.7" style="max-width:140px">
+      <button class="btn primary" id="compress">Compress</button>
+      <a class="btn" id="download" download="compressed.jpg" style="display:none">Download</a>
+    </div>
+    <div id="status" class="small" style="margin-top:8px"></div>
+    <div id="preview" style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px"></div>
+  </div>
+  <!-- AD / AFFILIATE -->
+</div>
+<script>
+const fileInput=document.getElementById('file'); const quality=document.getElementById('quality');
+const preview=document.getElementById('preview'); const status=document.getElementById('status');
+const dl=document.getElementById('download');
+document.getElementById('compress').onclick=async()=>{
+  if(!fileInput.files[0]){alert('Choose an image');return;}
+  const f=fileInput.files[0]; const q=Math.min(1,Math.max(0.1,parseFloat(quality.value)||0.7));
+  const img=new Image(); img.src=URL.createObjectURL(f); await img.decode();
+  const canvas=document.createElement('canvas'); const max=1600;
+  let w=img.width, h=img.height; if(w>max||h>max){ if(w>h){h=h*max/w; w=max;} else {w=w*max/h; h=max;} }
+  canvas.width=w; canvas.height=h; const ctx=canvas.getContext('2d'); ctx.drawImage(img,0,0,w,h);
+  const data=canvas.toDataURL('image/jpeg',q);
+  const sizeKB=(s)=>Math.round((s.length*3/4)/1024);
+  status.textContent=`Original: ${Math.round(f.size/1024)} KB → Compressed ~ ${sizeKB(data)} KB`;
+  const out=new Image(); out.src=data; preview.innerHTML=''; preview.append(img,out);
+  dl.href=data; dl.style.display='inline-block';
+};
+</script>
+
+<footer class="footer">
+  <div class="container">
+    <div>© <span id="year"></span> WebXE • Built for speed and simplicity.</div>
+    <div class="small">Ads & affiliate spaces are prepared inside pages. Add your AdSense/affiliate code where noted in comments.</div>
+  </div>
+</footer>
+<script>document.getElementById('year').textContent=new Date().getFullYear()</script>
+</body></html>
