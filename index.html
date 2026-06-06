@@ -7,7 +7,7 @@
 <title>WEBXE Store</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,700&display=swap" rel="stylesheet">
 <style>
 *{
   margin:0;
@@ -31,6 +31,33 @@ body{
 html{
   scroll-behavior:smooth;
 }
+
+
+/* ===== MARQUEE ===== */
+  .marquee-wrap {
+    overflow: hidden; border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 0; margin: 3rem 0;
+    background: rgba(255,153,0,0.04);
+  }
+  .marquee-inner {
+    display: flex; gap: 3rem;
+    animation: marquee 20s linear infinite;
+    white-space: nowrap;
+  }
+  .marquee-inner span {
+    font-size: 0.75rem; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--muted); font-weight: 500;
+  }
+  .marquee-inner span.dot {
+    color: var(--accent); font-size: 1.2rem; line-height: 1;
+  }
+
+
+
+
+
+
 
 /* GLOW */
 
@@ -459,6 +486,8 @@ footer{
 }
 
 </style>
+
+
 </head>
 <body>
 
@@ -500,7 +529,7 @@ footer{
 </div>
 
 <div class="hero-image">
-  <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=1200&auto=format&fit=crop">
+  <img src="https://m.media-amazon.com/images/I/71rjlGEi+1L._SX679_.jpg">
 
   <div class="floating-card">
     <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop">
@@ -510,34 +539,53 @@ footer{
 </div>
 
 </section>
-
 <section>
 <h2 class="section-title">Popular Categories</h2>
 
 <div class="categories">
 
 <div class="category">
-<h1>👕</h1>
+
 <h3>Fashion</h3>
 </div>
 
 <div class="category">
-<h1>⌚</h1>
+
 <h3>Accessories</h3>
 </div>
 
 <div class="category">
-<h1>💻</h1>
+
 <h3>Electronics</h3>
 </div>
 
 <div class="category">
-<h1>🎧</h1>
+
 <h3>Audio</h3>
 </div>
 
 </div>
 </section>
+
+
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-inner" id="marquee">
+    <span>FREE DELIVERY on ₹499+</span><span class="dot">◆</span>
+    <span>UP TO 70% OFF</span><span class="dot">◆</span>
+    <span>COD AVAILABLE</span><span class="dot">◆</span>
+    <span>EASY RETURNS</span><span class="dot">◆</span>
+    <span>TRUSTED PRODUCTS</span><span class="dot">◆</span>
+    <span>EXCLUSIVE DEALS</span><span class="dot">◆</span>
+    <span>FREE DELIVERY on ₹499+</span><span class="dot">◆</span>
+    <span>UP TO 70% OFF</span><span class="dot">◆</span>
+    <span>COD AVAILABLE</span><span class="dot">◆</span>
+    <span>EASY RETURNS</span><span class="dot">◆</span>
+    <span>TRUSTED PRODUCTS</span><span class="dot">◆</span>
+    <span>EXCLUSIVE DEALS</span><span class="dot">◆</span>
+  </div>
+</div>
 
 <section>
 <h2 class="section-title">Trending Products</h2>
@@ -545,7 +593,7 @@ footer{
 <div class="products">
 
 <div class="product-card">
-<img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop">
+<img src="https://m.media-amazon.com/images/I/71vhdLDaDQL._SL1500_.jpg">
 <h3>Running Shoes</h3>
 <p>Premium quality sneakers for daily comfort and performance.</p>
 <div class="price">₹2999</div>
@@ -553,13 +601,140 @@ footer{
 </div>
 
 <div class="product-card">
-<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80&w=800&auto=format&fit=crop">
-<h3>Luxury Watch</h3>
-<p>Modern stylish smartwatch with premium design and features.</p>
-<div class="price">₹5999</div>
+<img src="https://m.media-amazon.com/images/I/31WwCIKTZOL._SY300_SX300_QL70_FMwebp_.jpg">
+<h3>OnePlus Nord Buds</h3>
+<p>OnePlus Nord Buds 3r TWS Earbuds up to 54 Hours Playback, 2-mic Clear Calls, 3D Spatial Audio, AI Translation, 12.4mm Drivers, Dual-Device Connectivity, 47ms Low Latency - Ash Black</p>
+<div class="price">₹1,799.00</div>
+<button><a href="https://amzn.to/4fr23dX">Buy Now</a></button>
+</div>
+
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
 <button>Add To Cart</button>
 </div>
 
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
+<div class="product-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
+<h3>Wireless Headphones</h3>
+<p>Immersive sound experience with advanced noise cancellation.</p>
+<div class="price">₹3999</div>
+<button>Add To Cart</button>
+</div>
 <div class="product-card">
 <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop">
 <h3>Wireless Headphones</h3>
